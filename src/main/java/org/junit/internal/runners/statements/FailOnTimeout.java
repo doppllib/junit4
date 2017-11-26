@@ -1,7 +1,5 @@
 package org.junit.internal.runners.statements;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -279,13 +277,13 @@ public class FailOnTimeout extends Statement {
      * @return The CPU time used by {@code thr}, or 0 if it cannot be determined.
      */
     private long cpuTime (Thread thr) {
-        ThreadMXBean mxBean = ManagementFactory.getThreadMXBean();
+        /*ThreadMXBean mxBean = ManagementFactory.getThreadMXBean();
         if (mxBean.isThreadCpuTimeSupported()) {
             try {
                 return mxBean.getThreadCpuTime(thr.getId());
             } catch (UnsupportedOperationException e) {
             }
-        }
+        }*/
         return 0;
     }
 

@@ -1,0 +1,53 @@
+
+buildscript {
+    def doppl_gradle_version = doppl_gradle
+    repositories {
+        jcenter()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url dopplMavenDeploy }
+    }
+    dependencies {
+        classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
+        classpath "co.doppl:gradle:${doppl_gradle_version}"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url dopplMavenDeploy }
+    }
+}
+
+group = 'co.doppl.junit'
+version = doppl_junit_doppl
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'co.doppl.gradle'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile 'org.hamcrest:hamcrest-core:1.3'
+    doppl 'co.doppl.org.hamcrest:hamcrest-core:1.3.0'
+}
+
+ext.bintrayGitUrl = 'https://github.com/touchlab/junit4.git'
+apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
+apply from: "$dopplSharedScriptHome/bintray.gradle"
+
+test{
+    enabled = false
+}
+
+dopplConfig {
+    skipTests = true
+    mappingsInput="src/main/java/junit.mappings"
+
+    translatePattern {
+        exclude '**/package-info.java'
+    }
+}

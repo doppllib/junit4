@@ -1,7 +1,5 @@
 package org.junit.rules;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
 import java.util.List;
 
 import org.junit.runner.Description;
@@ -54,8 +52,7 @@ public class DisableOnDebug implements TestRule {
      * @param rule to disable during debugging
      */
     public DisableOnDebug(TestRule rule) {
-        this(rule, ManagementFactory.getRuntimeMXBean()
-                .getInputArguments());
+        this(rule, null);
     }
 
     /**
@@ -67,7 +64,7 @@ public class DisableOnDebug implements TestRule {
      */
     DisableOnDebug(TestRule rule, List<String> inputArguments) {
         this.rule = rule;
-        debugging = isDebugging(inputArguments);
+        debugging = false;//isDebugging(inputArguments);
     }
 
     /**
@@ -97,7 +94,7 @@ public class DisableOnDebug implements TestRule {
      * 
      * @param arguments
      *            the arguments passed to the runtime environment, usually this
-     *            will be {@link RuntimeMXBean#getInputArguments()}
+     *            will be RuntimeMXBean#getInputArguments()
      * @return true if the current JVM was started in debug mode, false
      *         otherwise.
      */
