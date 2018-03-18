@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
-        classpath "co.doppl:gradle:${doppl_gradle_version}"
+        classpath "org.j2objcgradle:gradle:${doppl_gradle_version}"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -20,19 +20,19 @@ allprojects {
     }
 }
 
-group = 'co.doppl.junit'
+group = 'org.j2objcgradle.junit'
 version = doppl_junit_doppl
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-apply plugin: 'co.doppl.gradle'
+apply plugin: 'org.j2objcgradle.gradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
     compile "org.hamcrest:hamcrest-core:$doppl_hamcrest_java"
-    doppl "co.doppl.org.hamcrest:hamcrest-core:$doppl_hamcrest_doppl"
+    doppl "org.j2objcgradle.org.hamcrest:hamcrest-core:$doppl_hamcrest_doppl"
 }
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/junit4.git'
@@ -43,7 +43,7 @@ test{
     enabled = false
 }
 
-dopplConfig {
+j2objcConfig {
     skipTests = true
 
     translatePattern {

@@ -1,4 +1,4 @@
-# Doppl Fork
+# J2objc Fork
 
 This is a fork of the JUnit library to provide tests and modifications to support
 iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
@@ -8,7 +8,7 @@ iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 ```groovy
 dependencies {
     testCompile 'junit:junit:4.12'
-    testDoppl 'co.doppl.junit:junit:4.12.0'
+    testDoppl 'org.j2objcgradle.junit:junit:4.12.0'
 }
 ```
 

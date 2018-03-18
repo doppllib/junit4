@@ -1,4 +1,4 @@
-# Doppl Fork
+# J2objc Fork
 
 This is a fork of the JUnit library to provide tests and modifications to support
 iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
